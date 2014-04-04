@@ -143,7 +143,7 @@ function refreshListDisplay() {
 function buildItem(str) {
 	var li = $('<li>');
 	var div = $('<div class="strawb-item-text">');
- 	div.html(str);
+ 	div.text(str);
  	var removeButton = getDeleteButton();
  	li.append(div);
  	li.append(removeButton);
