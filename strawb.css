@@ -45,6 +45,9 @@ input.strawb-submit-entry-button {
 	padding: 10px;
 	margin: 0;
 	cursor: pointer;
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .strawb-dropdown ul li:hover {
 	background-color: #ededed;
@@ -67,8 +70,12 @@ input.strawb-submit-entry-button {
 	margin: 5px 0;
 }
 .strawb-item-text {
+	width: 200px;
 	padding: 10px;
 	float: left;
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .strawb-delete-item-button {
 	-webkit-box-shadow: none;
