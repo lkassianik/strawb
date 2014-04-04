@@ -1,16 +1,16 @@
 
 div.strawb-main {
-	padding: 50px;
-	margin: 0 auto;
-	text-align: center;
+	padding: 30px;
+	/*margin: 0 auto;*/
+	/*text-align: center;*/
 	background-color: #e3f1fa;
 	font-size: 18px;
+	min-height: 500px;
 }
 
 input.strawb-input{
-	margin: 0 auto;
 	height: 50px;
-	width: 300px;
+	width: 200px;
 	padding: 10px;
 }
 input.strawb-submit-entry-button {
@@ -24,16 +24,14 @@ input.strawb-submit-entry-button {
 	height: 50px;
 	width: 50px;
 	background-position: center;
-	position: fixed;
-	margin-left: 10px;
+	display: inline-block;
+	margin-left: 3px;
+	padding: 0;
 }
 .strawb-dropdown {
-	position: absolute;
-	left: 50%;
 }
 .strawb-dropdown ul {
-	position: relative; 
-	left: -50%; 
+	position: absolute; 
 	border: dotted #cccccc 1px;
 	list-style-type: none;
 	width: 200px;
@@ -52,20 +50,21 @@ input.strawb-submit-entry-button {
 	background-color: #ededed;
 }
 .strawb-current-list {
-	margin: 0 auto;
 	margin-top: 50px;
-	width: 200px;
+	width: 255px;
 	text-align: left;
 	font-size: 20px;
 }
 .strawb-current-list ul {
 	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 .strawb-current-list ul li {
 	height: 52px;
 	border: solid #cccccc 1px;
 	border-radius: 5px;
-	margin: 5px;
+	margin: 5px 0;
 }
 .strawb-item-text {
 	padding: 10px;
