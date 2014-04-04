@@ -100,7 +100,7 @@ function clearSuggestions() {
 function showSuggestions(arr) {
 	for (var i=0; i<arr.length; i++){
 		var li = $('<li>');
-		li.html(arr[i]);
+		li.text(arr[i]);
 		li.click(function(event){
 			var val = $(this).html();
 			$('#strawb_search_input').val('');
