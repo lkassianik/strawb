@@ -1,9 +1,10 @@
 var dictionary = [];
+var currentList = [];
 
 
 $(document).ready(function() {
 	checkLocalStorage();
-	updateList();
+	refreshListDisplay();
 
 	//bind to input change event
     $('#strawb_search_input').bind('input', function() { 
@@ -31,6 +32,7 @@ function checkLocalStorage() {
 	if(typeof(Storage)!=="undefined")
   	{
   		retrieveDictionary();
+  		retrieveList();
   	}
 	else
   	{
@@ -38,18 +40,32 @@ function checkLocalStorage() {
   	}
 }
 
+function retrieveList() {
+	var list = localStorage["strawbListOfAmazingThings"];
+	if (!list || list === 'undefined') {
+		console.log("list was missing in local storage");
+		currentList = [];
+	} else {
+		currentList = JSON.parse(list);
+	}
+}
+
 function retrieveDictionary() {
-	var str = localStorage["strawbListOfAmazingThings"];
-	if (!str || str === 'undefined') {
+	var dict = localStorage["strawbDictionary"];
+	if (!dict || dict === 'undefined') {
 		console.log("list was missing in local storage");
 		dictionary = [];
 	} else {
-		dictionary = JSON.parse(str);
+		dictionary = JSON.parse(dict);
 	}
 }
 
 function updateDictionary() {
-	localStorage["strawbListOfAmazingThings"] = JSON.stringify(dictionary);
+	localStorage["strawbDictionary"] = JSON.stringify(dictionary);
+}
+
+function updateList() {
+	localStorage["strawbListOfAmazingThings"] = JSON.stringify(currentList);
 }
 
 function checkForSuggestions(val) {
@@ -99,19 +115,24 @@ function showSuggestions(arr) {
 
 function saveNewEntry(str) {
 	updateDictionaryWith(str);
+	currentList.push(str);
 	updateList();
 	clearSuggestions();
+	refreshListDisplay();
 }
 
 function updateDictionaryWith(str) {
-	dictionary.push(str);
-	localStorage['strawbListOfAmazingThings'] = JSON.stringify(dictionary);
+	var i = getIndexOfDictionaryItem(str);
+	if (!i) {
+		dictionary.push(str);
+		updateDictionary();
+	}
 }
 
-function updateList() {
+function refreshListDisplay() {
 	$('#strawb_current_list ul').empty();
-	if (dictionary && dictionary.length > 0) {
-		dictionary.forEach(function(item){
+	if (currentList && currentList.length > 0) {
+		currentList.forEach(function(item){
 			var str = item.toString();
 			buildItem(str);
 		});
@@ -139,10 +160,19 @@ function getDeleteButton() {
 
 function removeItem(item) {
 	var str = item.html();
-	var index = getIndexOfDictionaryItem(str);
-	dictionary.splice(index, 1);
-	updateDictionary();
+	var index = getIndexOfListItem(str);
+	currentList.splice(index, 1);
 	updateList();
+	refreshListDisplay();
+}
+
+function getIndexOfListItem(str) {
+	for (var i=0; i<currentList.length; i++) {
+		var value = currentList[i].toString();
+		if (str == value) {
+			return i;
+		}
+	}
 }
 
 function getIndexOfDictionaryItem(str) {
