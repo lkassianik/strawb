@@ -115,6 +115,9 @@ function showSuggestions(arr) {
 }
 
 function saveNewEntry(str) {
+	if (str.length < 1) {
+		return;
+	}
 	updateDictionaryWith(str);
 	currentList.push(str);
 	updateList();
