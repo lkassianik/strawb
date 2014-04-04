@@ -23,7 +23,7 @@ $(document).ready(function() {
     //handle check click event, add typed entry into list
     $('#strawb_submit_entry_button').click(function(event){
     	var val = $('#strawb_search_input').val();
-    	$(this).val('');
+    	$('#strawb_search_input').val('');
     	saveNewEntry(val);
     });
 });
@@ -103,6 +103,7 @@ function showSuggestions(arr) {
 		li.html(arr[i]);
 		li.click(function(event){
 			var val = $(this).html();
+			$('#strawb_search_input').val('');
 			saveNewEntry(val);
 			clearSuggestions();
 		});
@@ -123,7 +124,7 @@ function saveNewEntry(str) {
 
 function updateDictionaryWith(str) {
 	var i = getIndexOfDictionaryItem(str);
-	if (!i) {
+	if (!(i>-1)) {
 		dictionary.push(str);
 		updateDictionary();
 	}
