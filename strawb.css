@@ -1,0 +1,93 @@
+
+div.strawb-main {
+	padding: 50px;
+	margin: 0 auto;
+	text-align: center;
+	background-color: #e3f1fa;
+	font-size: 18px;
+}
+
+input.strawb-input{
+	margin: 0 auto;
+	height: 50px;
+	width: 300px;
+	padding: 10px;
+}
+input.strawb-submit-entry-button {
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    border: none;        
+	background-image: url('assets/check_green.png');
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+	height: 50px;
+	width: 50px;
+	background-position: center;
+	position: fixed;
+	margin-left: 10px;
+}
+.strawb-dropdown {
+	position: absolute;
+	left: 50%;
+}
+.strawb-dropdown ul {
+	position: relative; 
+	left: -50%; 
+	border: dotted #cccccc 1px;
+	list-style-type: none;
+	width: 300px;
+	text-align: left;
+	background-color: #f5f5f5;
+	margin: 0;
+	padding: 0;
+}
+.strawb-dropdown ul li {
+	border-bottom: dotted #cccccc 1px;
+	padding: 10px;
+	margin: 0;
+	cursor: pointer;
+}
+.strawb-dropdown ul li:hover {
+	background-color: #ededed;
+}
+.strawb-current-list {
+	margin: 0 auto;
+	margin-top: 50px;
+	width: 400px;
+	text-align: left;
+	font-size: 20px;
+}
+.strawb-current-list ul {
+	list-style-type: none;
+}
+.strawb-current-list ul li {
+	height: 52px;
+	border: solid #cccccc 1px;
+	border-radius: 5px;
+	margin: 5px;
+}
+.strawb-item-text {
+	padding: 10px;
+	float: left;
+}
+.strawb-delete-item-button {
+	-webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    border: none;        
+	background-image: url('assets/x_grey.png');
+	background-repeat: no-repeat;
+	background-color: #e3f1fa;
+	background-size: 30px 30px;
+	height: 50px;
+	width: 50px;
+	background-position: center;
+	display: inline-block;
+	float: right;
+}
+
+
+.inline {
+	display: inline-block;
+}
