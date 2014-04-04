@@ -160,7 +160,7 @@ function getDeleteButton() {
 }
 
 function removeItem(item) {
-	var str = item.html();
+	var str = $(item).find('div').html();
 	var index = getIndexOfListItem(str);
 	currentList.splice(index, 1);
 	updateList();
@@ -170,6 +170,7 @@ function removeItem(item) {
 function getIndexOfListItem(str) {
 	for (var i=0; i<currentList.length; i++) {
 		var value = currentList[i].toString();
+		// console.log(str + " " + value);
 		if (str == value) {
 			return i;
 		}
