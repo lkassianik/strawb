@@ -102,7 +102,7 @@ function showSuggestions(arr) {
 		var li = $('<li>');
 		li.text(arr[i]);
 		li.click(function(event){
-			var val = $(this).html();
+			var val = ($(this).text());
 			$('#strawb_search_input').val('');
 			saveNewEntry(val);
 			clearSuggestions();
@@ -163,6 +163,7 @@ function getDeleteButton() {
 }
 
 function removeItem(item) {
+	// console.log($(item).find('div').html());
 	var str = $(item).find('div').html();
 	var index = getIndexOfListItem(str);
 	currentList.splice(index, 1);
