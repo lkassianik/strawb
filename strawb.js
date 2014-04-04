@@ -163,8 +163,7 @@ function getDeleteButton() {
 }
 
 function removeItem(item) {
-	// console.log($(item).find('div').html());
-	var str = $(item).find('div').html();
+	var str = $(item).find('div').text();
 	var index = getIndexOfListItem(str);
 	currentList.splice(index, 1);
 	updateList();
@@ -183,7 +182,8 @@ function getIndexOfListItem(str) {
 
 function getIndexOfDictionaryItem(str) {
 	for (var i=0; i<dictionary.length; i++) {
-		var value = dictionary[i].toString();
+		console.log(dictionary[i]);
+		var value = dictionary[i];
 		if (str == value) {
 			return i;
 		}
