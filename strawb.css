@@ -1,11 +1,8 @@
 
 div.strawb-main {
 	padding: 30px;
-	/*margin: 0 auto;*/
-	/*text-align: center;*/
 	background-color: #e3f1fa;
 	font-size: 18px;
-	min-height: 500px;
 }
 
 input.strawb-input{
@@ -62,6 +59,7 @@ input.strawb-submit-entry-button {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
+	margin-bottom: 15px;
 	border: 1px dotted #cccccc;
 	min-height: 200px;
 }
@@ -96,6 +94,71 @@ input.strawb-submit-entry-button {
 }
 
 
+/* FEEDBACK */
+.strawb_feedback {
+
+}
+.strawb-feedback-input {
+	font-size: 18px;
+	width: 255px;
+	min-height: 200px;
+}
+.strawb-feedback-submit-button {
+	margin: 10px 0;
+	width: 255px;
+}
+
+
+
+
+/* FOOTER */
+.strawb-footer {
+	height: 60px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+.strawb-footer-bottom-bar {
+ 	background-color: #428bca;
+ 	height: 20px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+.strawb-footer-button {
+	height: 30px;
+	min-width: 30px;
+	float: left;
+	background-color: #428bca;
+	color: white;
+	padding: 0 5px;
+	margin: 10px;
+	cursor: pointer;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#strawb_footer_home_button {
+	background-image: url('assets/home.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20px 20px;
+}
+#strawb_footer_feedback_button {
+	background-image: url('assets/mail_black.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20px 15px;
+}
+#strawb_footer_history_button {
+	background-image: url('assets/clock_black.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20px 20px;	
+}
 .inline {
 	display: inline-block;
 }

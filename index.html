@@ -1,22 +1,43 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Strawb</title>
+		<title>strawb</title>
 	    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="strawb.css">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	</head>
 	<body id="body">
 		<div class="strawb-main">
-			<input id="strawb_search_input" class="strawb-input" placeholder="start typing..."></input>
-			<input id="strawb_submit_entry_button" class="btn-primary strawb-submit-entry-button"></input>
-			<div id="strawb_search_suggestion" class="strawb-dropdown" style="display:none">
-				<ul></ul>
-			</div>
+			<div id="strawb_home">
+				<input id="strawb_search_input" class="strawb-input" placeholder="start typing..."></input>
+				<input id="strawb_submit_entry_button" class="btn-primary strawb-submit-entry-button"></input>
+				<div id="strawb_search_suggestion" class="strawb-dropdown" style="display:none">
+					<ul></ul>
+				</div>
 
-			<div id="strawb_current_list" class="strawb-current-list">
-				<ul></ul>
+				<div id="strawb_current_list" class="strawb-current-list">
+					<ul></ul>
+				</div>
 			</div>
+			<div id="strawb_feedback" style="display:none">
+				<form action="feedback.php" method="POST">
+					<textarea class="form-control strawb-feedback-input" name="message" placeholder="got feedback?"></textarea>
+					<input class="btn btn-success strawb-feedback-submit-button" type="submit" value="submit">
+				</form>
+			</div>
+			<div id="strawb_history" style="display:none">
+
+			</div>
+			<div id="strawb_thanks" style="display:none">
+				Thanks! You're the best!
+			</div>
+		</div>
+
+		<div class="strawb-footer">
+			<a href=""><div id="strawb_footer_home_button" class="strawb-footer-button"></div></a>
+			<a href="#strawb_feedback"><div id="strawb_footer_feedback_button" class="strawb-footer-button"></div></a>
+			<a href="#strawb_dictionary"><div id="strawb_footer_history_button" class="strawb-footer-button" style="display:none"></div></a>
+			<div class="strawb-footer-bottom-bar"></div>
 		</div>
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
