@@ -3,7 +3,7 @@
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 
-$f = fopen("feedback.txt", "a");
+$f = fopen("feedback_zebra.txt", "a");
 fwrite($f, $subject."\n");
 fwrite($f, $message."\n\n");
 
