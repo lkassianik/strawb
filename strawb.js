@@ -190,6 +190,9 @@ function refreshListDisplay() {
 			var str = item.toString();
 			buildItem(str);
 		});
+	} else {
+		var div = $("<div class='strawb-list-placeholder'>( your list )</div>");
+		$('#strawb_current_list ul').append(div);
 	}
 }
 

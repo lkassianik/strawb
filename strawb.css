@@ -63,6 +63,10 @@ input.strawb-submit-entry-button {
 	border: 1px dotted #cccccc;
 	min-height: 200px;
 }
+.strawb-list-placeholder {
+	color: #a9a9a9;
+	margin: 5px;
+}
 .strawb-current-list ul li {
 	height: 52px;
 	border: solid #cccccc 1px;
