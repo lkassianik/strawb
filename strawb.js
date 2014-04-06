@@ -253,9 +253,9 @@ function buildListItem(str, destination) {
 	var div = $('<div class="strawb-item-text">');
  	div.text(str);
 
- 	var removeButton = getCompletedButton(currentList);
+ 	var completedButton = getCompletedButton(currentList);
  	li.append(div);
- 	li.append(removeButton);
+ 	li.append(completedButton);
 	$(destination).append(li);
 }
 
@@ -285,7 +285,7 @@ function getDeleteButton(arr) {
 	var button = $('<input class="btn strawb-delete-item-button"></input>');
 	button.click(function(event){
 		var item = $(this).parent();
-		removeListItem(item, arr);
+		removeDictionaryItem(item);
 	});
 	return button;
 }
@@ -299,10 +299,18 @@ function getAddButton(arrDestination) {
 	return button;	
 }
 
-function removeListItem(item, arr) {
+function removeListItem(item) {
 	var str = $(item).find('div').text();
-	var index = getIndexOfItem(str, arr);
-	arr.splice(index, 1);
+	var index = getIndexOfItem(str);
+	currentList.splice(index, 1);
+
+	updateAndRefreshAll();
+}
+
+function removeDictionaryItem(item) {
+	var str = $(item).find('div').text();
+	var index = getIndexOfDictionaryItem(str);
+	dictionary.splice(index, 1);
 
 	updateAndRefreshAll();
 }
