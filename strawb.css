@@ -15,7 +15,7 @@ input.strawb-submit-entry-button {
        -moz-box-shadow: none;
             box-shadow: none;
     border: none;        
-	background-image: url('assets/check_green.png');
+	background-image: url('assets/plus_green.png');
 	background-repeat: no-repeat;
 	background-size: 30px 30px;
 	height: 50px;
@@ -24,6 +24,7 @@ input.strawb-submit-entry-button {
 	display: inline-block;
 	margin-left: 3px;
 	padding: 0;
+	cursor: pointer;
 }
 .strawb-dropdown {
 }
@@ -55,10 +56,11 @@ input.strawb-submit-entry-button {
 	text-align: left;
 	font-size: 20px;
 }
-.strawb-current-list ul {
+.strawb-current-list ul, .strawb-history ul {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
+	padding-bottom: 50px;
 	margin-bottom: 15px;
 	border: 1px dotted #cccccc;
 	min-height: 200px;
@@ -67,7 +69,7 @@ input.strawb-submit-entry-button {
 	color: #a9a9a9;
 	margin: 5px;
 }
-.strawb-current-list ul li {
+.strawb-current-list ul li, .strawb-history ul li {
 	height: 52px;
 	border: solid #cccccc 1px;
 	border-radius: 5px;
@@ -81,6 +83,23 @@ input.strawb-submit-entry-button {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+.strawb-completed-item-button {
+	-webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    border: none;        
+	background-image: url('assets/check_green.png');
+	background-repeat: no-repeat;
+	background-color: #e3f1fa;
+	background-size: 30px 30px;
+	background-position: center;
+	height: 50px;
+	width: 50px;
+	display: inline-block;
+	float: right;	
+	padding: 0;
+	margin: 0;
+}
 .strawb-delete-item-button {
 	-webkit-box-shadow: none;
        -moz-box-shadow: none;
@@ -90,11 +109,13 @@ input.strawb-submit-entry-button {
 	background-repeat: no-repeat;
 	background-color: #e3f1fa;
 	background-size: 30px 30px;
+	background-position: center;
 	height: 50px;
 	width: 50px;
-	background-position: center;
 	display: inline-block;
 	float: right;
+	padding: 0;
+	margin: 0;
 }
 
 
@@ -112,6 +133,38 @@ input.strawb-submit-entry-button {
 	width: 255px;
 }
 
+
+/* HISTORY */
+.strawb-history {
+	width: 255px;
+	text-align: left;
+	font-size: 20px;
+}
+.strawb-history ul li .strawb-item-text {
+	width: 150px;
+	padding: 10px;
+	float: left;
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.strawb-add-item-button {
+	-webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    border: none;        
+	background-image: url('assets/plus_green.png');
+	background-repeat: no-repeat;
+	background-color: #e3f1fa;
+	background-size: 30px 30px;
+	height: 50px;
+	width: 50px;
+	background-position: center;
+	display: inline-block;
+	float: right;	
+	padding: 0;
+	margin: 0;
+}
 
 
 

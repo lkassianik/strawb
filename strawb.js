@@ -5,6 +5,7 @@ var currentList = [];
 $(document).ready(function() {
 	checkLocalStorage();
 	refreshListDisplay();
+	refreshHistoryDisplay();
 	addStyles();
 	changeNav();
 	$(window).on('hashchange', function() {
@@ -49,13 +50,17 @@ function changeNav() {
 		h = "#strawb_home";
 	}
 
-	var divs = ['#strawb_home', '#strawb_feedback', '#strawb_history', '#strawb_thanks'];
+	var divs = ['#strawb_home', '#strawb_feedback', '#strawb_history'];
 	for (var i=0; i<divs.length; i++) {
 		if (h == divs[i]) {
 			$(divs[i]).show();
 		} else {
 			$(divs[i]).hide();
 		}
+	}
+
+	if (h == "#strawb_history") {
+		refreshHistoryDisplay();
 	}
 
 	// $('#strawb_footer_home_button').click(function(event){
@@ -88,6 +93,10 @@ function checkLocalStorage() {
   	{
   		window.alert("Unfortunately, I couldn't find your local storage.");
   	}
+}
+
+function loadHistory() {
+	refreshHistoryDisplay();
 }
 
 function retrieveList() {
@@ -183,12 +192,22 @@ function updateDictionaryWith(str) {
 	}
 }
 
+function updateAndRefreshAll() {
+	updateList();
+	updateDictionary();
+	refreshListDisplay();
+	refreshHistoryDisplay();
+}
+
 function refreshListDisplay() {
 	$('#strawb_current_list ul').empty();
 	if (currentList && currentList.length > 0) {
 		currentList.forEach(function(item){
+			if (item == null) {
+				item = '';
+			}  
 			var str = item.toString();
-			buildItem(str);
+			buildListItem(str, '#strawb_current_list ul');
 		});
 	} else {
 		var div = $("<div class='strawb-list-placeholder'>( your list )</div>");
@@ -196,37 +215,106 @@ function refreshListDisplay() {
 	}
 }
 
-function buildItem(str) {
+function refreshHistoryDisplay() {
+	$('#strawb_history ul').empty();
+	if (dictionary && dictionary.length > 0) {
+		dictionary.forEach(function(item){
+			if (item == null) {
+				item = '';
+			}  
+			var str = item.toString();
+			buildHistoryItem(str, '#strawb_history ul');
+		});
+	} else {
+		var div = $("<div class='strawb-list-placeholder'>( your history )</div>");
+		$('#strawb_history ul').append(div);
+	}	
+}
+
+// function buildItem(str, destination, arr) {
+// 	var li = $('<li>');
+// 	var div = $('<div class="strawb-item-text">');
+//  	div.text(str);
+//  	li.append(div);
+
+//  	if (arr == dictionary) {
+//  		var addButton = getAddButton(currentList);
+//  		li.append(addButton);
+//  	}
+
+//  	var removeButton = getDeleteButton(arr);
+//  	li.append(removeButton);
+
+// 	$(destination).append(li);
+// }
+
+function buildListItem(str, destination) {
 	var li = $('<li>');
 	var div = $('<div class="strawb-item-text">');
  	div.text(str);
- 	var removeButton = getDeleteButton();
+
+ 	var removeButton = getCompletedButton(currentList);
  	li.append(div);
  	li.append(removeButton);
-	$('#strawb_current_list ul').append(li);
+	$(destination).append(li);
 }
 
-function getDeleteButton() {
+function buildHistoryItem(str, destination) {
+	var li = $('<li>');
+	var div = $('<div class="strawb-item-text">');
+ 	div.text(str);
+	var addButton = getAddButton(currentList);
+ 	var removeButton = getDeleteButton(dictionary);
+
+ 	li.append(div);
+	li.append(addButton);
+ 	li.append(removeButton);
+	$(destination).append(li);	
+}
+
+function getCompletedButton(arr) {
+	var button = $('<input class="btn strawb-completed-item-button"></input>');
+	button.click(function(event){
+		var item = $(this).parent();
+		removeListItem(item, arr);
+	});
+	return button;	
+}
+
+function getDeleteButton(arr) {
 	var button = $('<input class="btn strawb-delete-item-button"></input>');
 	button.click(function(event){
 		var item = $(this).parent();
-		removeItem(item);
+		removeListItem(item, arr);
 	});
 	return button;
 }
 
-function removeItem(item) {
-	var str = $(item).find('div').text();
-	var index = getIndexOfListItem(str);
-	currentList.splice(index, 1);
-	updateList();
-	refreshListDisplay();
+function getAddButton(arrDestination) {
+	var button = $('<input class="btn strawb-add-item-button"></input>');
+	button.click(function(event){
+		var item = $(this).parent().find('div').text();
+		saveNewEntry(item);
+	});
+	return button;	
 }
 
-function getIndexOfListItem(str) {
+function removeListItem(item, arr) {
+	var str = $(item).find('div').text();
+	var index = getIndexOfItem(str, arr);
+	arr.splice(index, 1);
+
+	updateAndRefreshAll();
+}
+
+function getIndexOfItem(str) {
 	for (var i=0; i<currentList.length; i++) {
+		//cure if corrupted
+		if (currentList[i] == null) {
+			currentList[i] = "";
+		}  	
+
 		var value = currentList[i].toString();
-		// console.log(str + " " + value);
 		if (str == value) {
 			return i;
 		}
@@ -235,7 +323,11 @@ function getIndexOfListItem(str) {
 
 function getIndexOfDictionaryItem(str) {
 	for (var i=0; i<dictionary.length; i++) {
-		console.log(dictionary[i]);
+		//cure if corrupted
+		if (dictionary[i] == null) {
+			dictionary[i] = "";
+		}  
+
 		var value = dictionary[i];
 		if (str == value) {
 			return i;
