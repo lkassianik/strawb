@@ -28,6 +28,9 @@ input.strawb-submit-entry-button {
 	cursor: pointer;
 	vertical-align: middle;
 }
+
+
+
 .strawb-dropdown {
 }
 .strawb-dropdown ul {
@@ -85,7 +88,7 @@ input.strawb-submit-entry-button {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-.strawb-completed-item-button {
+input.strawb-completed-item-button {
 	-webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
@@ -102,7 +105,7 @@ input.strawb-submit-entry-button {
 	padding: 0;
 	margin: 0;
 }
-.strawb-delete-item-button {
+input.strawb-delete-item-button {
 	-webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
@@ -150,7 +153,7 @@ input.strawb-submit-entry-button {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-.strawb-add-item-button {
+input.strawb-add-item-button, input.strawb-add-item-button:active, input.strawb-add-item-button:focus {
 	-webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
@@ -166,6 +169,7 @@ input.strawb-submit-entry-button {
 	float: right;	
 	padding: 0;
 	margin: 0;
+	outline: none;
 }
 
 
@@ -220,4 +224,18 @@ input.strawb-submit-entry-button {
 }
 .inline {
 	display: inline-block;
+}
+input.strawb-submit-entry-button:active, input.strawb-completed-item-button:active, input.strawb-delete-item-button:active, input.strawb-add-item-button:active,
+input.strawb-submit-entry-button:focus, input.strawb-completed-item-button:focus, input.strawb-delete-item-button:focus, input.strawb-add-item-button:focus
+{
+	border: none;
+	outline: none;
+}
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {   
+	border-color: rgba(126, 239, 104, 0.8);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+	outline: 0 none;
+}
+:focus { 
+	outline: none; 
 }

@@ -273,7 +273,7 @@ function buildHistoryItem(str, destination) {
 }
 
 function getCompletedButton(arr) {
-	var button = $('<input class="btn strawb-completed-item-button" type="submit" value=""></input>');
+	var button = $('<input class="btn strawb-completed-item-button" readonly="true"></input>');
 	button.click(function(event){
 		var item = $(this).parent();
 		removeListItem(item, arr);
@@ -282,7 +282,7 @@ function getCompletedButton(arr) {
 }
 
 function getDeleteButton(arr) {
-	var button = $('<input class="btn strawb-delete-item-button" type="submit" value=""></input>');
+	var button = $('<input class="btn strawb-delete-item-button" readonly="true"></input>');
 	button.click(function(event){
 		var item = $(this).parent();
 		removeDictionaryItem(item);
@@ -291,7 +291,7 @@ function getDeleteButton(arr) {
 }
 
 function getAddButton(arrDestination) {
-	var button = $('<input class="btn strawb-add-item-button" type="submit" value=""></input>');
+	var button = $('<input class="btn strawb-add-item-button" readonly="true"></input>');
 	button.click(function(event){
 		var item = $(this).parent().find('div').text();
 		saveNewEntry(item);
