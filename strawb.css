@@ -9,6 +9,7 @@ input.strawb-input{
 	height: 50px;
 	width: 200px;
 	padding: 10px;
+	vertical-align: middle;
 }
 input.strawb-submit-entry-button {
     -webkit-box-shadow: none;
@@ -25,6 +26,7 @@ input.strawb-submit-entry-button {
 	margin-left: 3px;
 	padding: 0;
 	cursor: pointer;
+	vertical-align: middle;
 }
 .strawb-dropdown {
 }
