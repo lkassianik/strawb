@@ -101,6 +101,7 @@ function loadHistory() {
 
 function retrieveList() {
 	var list = localStorage["strawbListOfAmazingThings"];
+
 	if (!list || list === 'undefined') {
 		console.log("list was missing in local storage");
 		currentList = [];
@@ -178,7 +179,7 @@ function saveNewEntry(str) {
 		return;
 	}
 	updateDictionaryWith(str);
-	currentList.push(str);
+	currentList.splice(0, 0, str);
 	updateList();
 	clearSuggestions();
 	refreshListDisplay();
@@ -187,7 +188,7 @@ function saveNewEntry(str) {
 function updateDictionaryWith(str) {
 	var i = getIndexOfDictionaryItem(str);
 	if (!(i>-1)) {
-		dictionary.push(str);
+		dictionary.splice(0, 0, str);
 		updateDictionary();
 	}
 }
